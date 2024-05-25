@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="eng">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="../html/css/app.css">
+    <meta name="viewport" content="width=device-width">
+    <title>PAINEL DE GERENCIAMENTO DE PESSOAS</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form_container">
+            <button type="button" onclick="buscarTodos()" class="botaoPesquisar">Pesquisar</button>
+            <form class="insercao_form">
+                <input type="text" placeholder="Insira o nome" class="nome">
+                <input type="text" placeholder="Insira a data de nascimento (dd/MM/yyyy)" class="dataNascimento">
+                <input type="text" placeholder="Insira o cpf" class="cpf">
+                <label for="sexo">Selecione um sexo</label>
+                <select id="sexo" name="sexo" class="sexo">
+                    <option value="M">Masculino</option>
+                    <option value="F">Feminino</option>
+                </select>
+                <input type="text" placeholder="Insira a altura em Metros" class="altura">
+                <input type="text" placeholder="Insira o peso em KG" class="peso">
+                <button type="button" onclick="inserir()">Inserir</button>
+            </form>
+
+            <form class="edicao_form">
+                <input type="hidden" class="edicao_id">
+                <input type="text" placeholder="Insira o nome" class="edicao_nome">
+                <input type="text" placeholder="Insira a data de nascimento (dd/MM/yyyy)" class="edicao_dataNascimento">
+                <input type="text" placeholder="Insira o cpf" class="edicao_cpf">
+                <label for="sexo">Selecione um sexo</label>
+                <select id="sexo" name="sexo" class="edicao_sexo">
+                    <option value="M">Masculino</option>
+                    <option value="F">Feminino</option>
+                </select>
+                <input type="text" placeholder="Insira a altura em Metros" class="edicao_altura">
+                <input type="text" placeholder="Insira o peso em KG" class="edicao_peso">
+                <button type="button" onclick="alterar()">Alterar</button>
+            </form>
+            <button class="botaoAdicionar" onclick="insercaoForm()">Criar</button>
+            <br />
+            <table class="tabela">
+                <thead>
+                    <th>Nome</th>
+                    <th>Nascimento</th>
+                    <th>CPF</th>
+                    <th>Sexo</th>
+                    <th>Altura</th>
+                    <th>Peso</th>
+                    <th>Acao</th>
+                </thead>
+                <tbody class="tabelaDados"></tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <script src="../index.js"></script>
+</body>
+</html>
