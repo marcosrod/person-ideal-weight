@@ -1,0 +1,18 @@
+server:
+  port: 8301
+  
+spring:
+  sql:
+    init:
+      mode: always
+  datasource:
+    url: jdbc:mysql://localhost:8302/main
+    username: root
+    password: 12345
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: none
+    show-sql: true
