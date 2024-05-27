@@ -2,6 +2,7 @@ package com.marcosrod.person_ideal_weight_api.modulos.pessoa.service;
 
 import java.util.List;
 
+import com.marcosrod.person_ideal_weight_api.modulos.pessoa.comum.exception.ValidacaoException;
 import com.marcosrod.person_ideal_weight_api.modulos.pessoa.enums.Sexo;
 import com.marcosrod.person_ideal_weight_api.modulos.pessoa.dto.PessoaResponse;
 import com.marcosrod.person_ideal_weight_api.modulos.pessoa.model.Pessoa;
@@ -14,6 +15,9 @@ import org.springframework.stereotype.Service;
 import com.marcosrod.person_ideal_weight_api.modulos.pessoa.dto.PessoaRequest;
 
 import lombok.RequiredArgsConstructor;
+
+import static com.marcosrod.person_ideal_weight_api.modulos.pessoa.enums.PessoaErro.ERRO_AO_EXCLUIR_PESSOA;
+import static com.marcosrod.person_ideal_weight_api.modulos.pessoa.enums.PessoaErro.PESSOA_NAO_ENCONTRADA;
 
 @Service
 @RequiredArgsConstructor
@@ -65,13 +69,13 @@ public class PessoaService {
 		try {
 			task.deleteById(id);
 		} catch (DataIntegrityViolationException dive) {
-			throw new RuntimeException("Nao foi possivel excluir o usuario: "
+			throw new ValidacaoException(ERRO_AO_EXCLUIR_PESSOA.getDescricao()
 					.concat(dive.getMessage()));
 		}
 	}
 
 	private Pessoa findPessoaById(Long id) {
 		return task.findById(id)
-				.orElseThrow(() -> new RuntimeException("O usuario requisitado nao existe."));
+				.orElseThrow(() -> new ValidacaoException(PESSOA_NAO_ENCONTRADA.getDescricao()));
 	}
 }
